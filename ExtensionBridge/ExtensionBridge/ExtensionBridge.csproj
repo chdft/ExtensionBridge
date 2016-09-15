@@ -39,6 +39,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ExtensionAttribute.cs" />
+    <Compile Include="ExtensionContractAttribute.cs" />
+    <Compile Include="ISource.cs" />
+    <Compile Include="LocalAssemblySource.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
