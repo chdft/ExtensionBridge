@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace ExtensionBridge
 {
-	public interface ISource<TExtension>
+	public interface ISource<TExtensionContract> where TExtensionContract : class
 	{
-		IEnumerable<TExtension> GetAll();
+		IEnumerable<TExtensionContract> GetAllInstances();
 	}
 }

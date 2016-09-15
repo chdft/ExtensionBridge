@@ -1,18 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ExtensionBridge
 {
-	public class LocalAssemblySource<TExtension> : ISource<TExtension>
+	public class LocalAssemblySource<TExtensionContract> : AssemblySource<TExtensionContract> where TExtensionContract : class
 	{
-		public LocalAssemblySource() { }
-
-		public IEnumerable<TExtension> GetAll()
-		{
-			throw new NotImplementedException();
-		}
+		public LocalAssemblySource() : base(Assembly.GetCallingAssembly()) { }
 	}
 }

@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AssemblySource.cs" />
     <Compile Include="ExtensionAttribute.cs" />
     <Compile Include="ExtensionContractAttribute.cs" />
     <Compile Include="ISource.cs" />
