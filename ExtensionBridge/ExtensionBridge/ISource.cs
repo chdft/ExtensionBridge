@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ExtensionBridge
 {
-	public interface ISource<TExtensionContract> where TExtensionContract : class
+	public interface ISource
 	{
-		IEnumerable<TExtensionContract> GetAllInstances();
+		IEnumerable<Assembly> GetAssemblies();
 	}
 }

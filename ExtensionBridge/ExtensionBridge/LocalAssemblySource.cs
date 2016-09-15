@@ -7,8 +7,13 @@ using System.Threading.Tasks;
 
 namespace ExtensionBridge
 {
-	public class LocalAssemblySource<TExtensionContract> : AssemblySource<TExtensionContract> where TExtensionContract : class
+	public class LocalAssemblySource : ISource
 	{
-		public LocalAssemblySource() : base(Assembly.GetCallingAssembly()) { }
+		public LocalAssemblySource() { }
+
+		public IEnumerable<Assembly> GetAssemblies()
+		{
+			return new Assembly[] { Assembly.GetExecutingAssembly() };
+		}
 	}
 }
