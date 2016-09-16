@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace ExtensionBridge
 {
 	/// <summary>
-	/// The exception that is thrown when a source fails to load its assemblies.
+	/// The exception that is thrown when a source fails to load/find/locate its assemblies.
 	/// </summary>
 	[Serializable]
 	public class SourceLoadingException : Exception
