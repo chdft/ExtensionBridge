@@ -8,8 +8,13 @@ using System.Threading.Tasks;
 
 namespace ExtensionBridge
 {
+	/// <summary>
+	/// Uses all assemblies found in a directory as a source for extensions.
+	/// </summary>
 	public class DirectorySource : ISource
 	{
+		/// <param name="directory">relative or absolute path to a directory</param>
+		/// <param name="searchPattern">search pattern used to filter files; filters for DLL-files by default; see https://msdn.microsoft.com/library/wz42302f(v=vs.110).aspx for information about the allowed characters</param>
 		public DirectorySource(string directory, string searchPattern = "*.dll")
 		{
 			Directory = directory;
@@ -27,7 +32,7 @@ namespace ExtensionBridge
 			if (Assemblies == null)
 			{
 				List<Assembly> assemblies = new List<Assembly>();
-				foreach (var file in System.IO.Directory.GetFiles(Directory))
+				foreach (var file in System.IO.Directory.GetFiles(Directory, SearchPattern, SearchOption.TopDirectoryOnly))
 				{
 					assemblies.Add(Assembly.LoadFrom(file));
 				}
