@@ -10,8 +10,8 @@ namespace ExtensionBridge
 	/// marks the decorated interface as base for an extension
 	/// </summary>
 	[AttributeUsage(AttributeTargets.Interface, Inherited = false, AllowMultiple = false)]
-	public sealed class ExtensionContractAttribute : Attribute
+	public sealed class ContractAttribute : Attribute
 	{
-		public ExtensionContractAttribute() { }
+		public ContractAttribute() { }
 	}
 }

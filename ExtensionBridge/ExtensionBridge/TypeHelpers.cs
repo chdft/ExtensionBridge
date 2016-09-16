@@ -41,7 +41,7 @@ namespace ExtensionBridge
 
 		public static bool IsContract(this Type potentialContractType)
 		{
-			return potentialContractType.GetCustomAttributes<ExtensionContractAttribute>().Any();
+			return potentialContractType.GetCustomAttributes<ContractAttribute>().Any();
 		}
 	}
 }
