@@ -39,5 +39,9 @@ namespace ExtensionBridge
 			return false;
 		}
 
+		public static bool IsContract(this Type potentialContractType)
+		{
+			return potentialContractType.GetCustomAttributes<ExtensionContractAttribute>().Any();
+		}
 	}
 }

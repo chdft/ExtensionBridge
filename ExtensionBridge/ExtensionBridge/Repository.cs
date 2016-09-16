@@ -28,11 +28,27 @@ namespace ExtensionBridge
 		/// </summary>
 		/// <typeparam name="TContract">contract the extension must implement</typeparam>
 		/// <returns>collection of matching extension</returns>
+		/// <exception cref="ArgumentException"><typeparamref name="TContract"/> is not a contract (decorated with <see cref="ContractAttribute"/>)</exception>
 		public IEnumerable<Extension<TContract>> GetExtensions<TContract>() where TContract : class
 		{
+			if (!typeof(TContract).IsContract())
+			{
+				throw new ArgumentException("cannot search extensions for an interface that is not a contract (use ContractAttribute)");
+			}
+
 			foreach (var source in Sources)
 			{
-				foreach (var assembly in source.GetAssemblies())
+				IEnumerable<Assembly> assemblies = null;
+				try
+				{
+					assemblies = source.GetAssemblies();
+				}
+				catch (SourceLoadingException)
+				{
+					//TODO: log somewhere?!
+					//ignore for now
+				}
+				foreach (var assembly in assemblies)
 				{
 					foreach (Type type in assembly.GetTypes())
 					{
