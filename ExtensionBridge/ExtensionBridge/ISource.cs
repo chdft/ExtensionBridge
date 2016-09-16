@@ -13,6 +13,7 @@ namespace ExtensionBridge
 		/// get a collection of assemblies which may contain extensions
 		/// </summary>
 		/// <returns>collection of assemblies which may contain extensions</returns>
+		/// <exception cref="SourceLoadingException">one or more assemblies could not be loaded</exception>
 		IEnumerable<Assembly> GetAssemblies();
 	}
 }
