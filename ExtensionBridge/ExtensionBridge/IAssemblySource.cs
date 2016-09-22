@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ExtensionBridge
 {
-	public interface ISource
+	public interface IAssemblySource
 	{
 		/// <summary>
 		/// get a collection of assemblies which may contain extensions

@@ -8,7 +8,7 @@ namespace ExtensionBridge
 {
 	public class Extension<TContract> where TContract : class
 	{
-		public Extension(Type extensionType, ISource source)
+		public Extension(Type extensionType, IAssemblySource source)
 		{
 			ExtensionType = extensionType;
 			Source = source;
@@ -16,7 +16,7 @@ namespace ExtensionBridge
 
 		public Type ExtensionType { get; private set; }
 
-		public ISource Source { get; private set; }
+		public IAssemblySource Source { get; private set; }
 
 		public TContract CreateInstance()
 		{

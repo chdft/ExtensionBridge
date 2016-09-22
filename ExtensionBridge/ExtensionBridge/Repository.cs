@@ -17,18 +17,18 @@ namespace ExtensionBridge
 		/// <remarks>
 		/// This reference is guaranteed to not change during the lifetime of this object.
 		/// </remarks>
-		public IList<ISource> Sources
+		public IList<IAssemblySource> Sources
 		{
 			get { return _Sources; }
 		}
-		private IList<ISource> _Sources = new List<ISource>();
+		private IList<IAssemblySource> _Sources = new List<IAssemblySource>();
 
 		/// <summary>
 		/// extensions for the contract <typeparamref name="TContract"/>
 		/// </summary>
 		/// <typeparam name="TContract">contract the extension must implement</typeparam>
 		/// <returns>collection of matching extension</returns>
-		/// <exception cref="ArgumentException"><typeparamref name="TContract"/> is not a contract (decorated with <see cref="ContractAttribute"/>)</exception>
+		/// <exception cref="ArgumentException"><typeparamref name="TContract"/> is not a contract (decorated with <see cref="ExtensionContractAttribute"/>)</exception>
 		public IEnumerable<Extension<TContract>> GetExtensions<TContract>() where TContract : class
 		{
 			if (!typeof(TContract).IsContract())

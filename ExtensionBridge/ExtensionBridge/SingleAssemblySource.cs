@@ -10,9 +10,9 @@ namespace ExtensionBridge
 	/// <summary>
 	/// Uses a provided assembly as source for extensions.
 	/// </summary>
-	public class SingleAssemblySource : ISource
+	public class KnownAssemblySource : IAssemblySource
 	{
-		public SingleAssemblySource(Assembly assembly)
+		public KnownAssemblySource(Assembly assembly)
 		{
 			Assembly = assembly;
 		}

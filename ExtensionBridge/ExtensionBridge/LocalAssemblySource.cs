@@ -10,7 +10,7 @@ namespace ExtensionBridge
 	/// <summary>
 	/// Uses the currently executing assembly as source for extensions.
 	/// </summary>
-	public class LocalAssemblySource : ISource
+	public class LocalAssemblySource : IAssemblySource
 	{
 		public LocalAssemblySource() { }
 
