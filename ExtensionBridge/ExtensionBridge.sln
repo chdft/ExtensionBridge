@@ -5,6 +5,10 @@ VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtensionBridge", "ExtensionBridge\ExtensionBridge.csproj", "{4D2EF7AD-A57A-4FB5-A2D7-0F7BF195150F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtensionBridge.Sample.Host", "ExtensionBridge.Sample.Host\ExtensionBridge.Sample.Host.csproj", "{A5B75782-D1ED-4E21-B302-9C6220D5295B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtensionBridge.Sample.Extension1", "ExtensionBridge.Sample.Extension1\ExtensionBridge.Sample.Extension1.csproj", "{8FD04687-1320-49C1-988A-C2443732AA09}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{4D2EF7AD-A57A-4FB5-A2D7-0F7BF195150F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4D2EF7AD-A57A-4FB5-A2D7-0F7BF195150F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4D2EF7AD-A57A-4FB5-A2D7-0F7BF195150F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5B75782-D1ED-4E21-B302-9C6220D5295B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5B75782-D1ED-4E21-B302-9C6220D5295B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5B75782-D1ED-4E21-B302-9C6220D5295B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5B75782-D1ED-4E21-B302-9C6220D5295B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FD04687-1320-49C1-988A-C2443732AA09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FD04687-1320-49C1-988A-C2443732AA09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FD04687-1320-49C1-988A-C2443732AA09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FD04687-1320-49C1-988A-C2443732AA09}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
