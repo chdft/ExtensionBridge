@@ -48,16 +48,19 @@ namespace ExtensionBridge
 					//TODO: log somewhere?!
 					//ignore for now
 				}
-				foreach (var assembly in assemblies)
+				if (assemblies != null)
 				{
-					foreach (Type type in assembly.GetTypes())
+					foreach (var assembly in assemblies)
 					{
-						//check first, if the contract is implemented at all; otherwise the search for an extension-attribute isn't nessecary
-						//check ContainsGenericParameters, because generic types with unspecified type parameters cannot be instatiated...
-						if (type.ImplementsContract<TContract>() && type.DeclaresContract<TContract>() && !type.ContainsGenericParameters)
+						foreach (Type type in assembly.GetTypes())
 						{
-							yield return new Extension<TContract>(type, source);
-							break; //return each type only once
+							//check first, if the contract is implemented at all; otherwise the search for an extension-attribute isn't nessecary
+							//check ContainsGenericParameters, because generic types with unspecified type parameters cannot be instatiated...
+							if (type.ImplementsContract<TContract>() && type.DeclaresContract<TContract>() && !type.ContainsGenericParameters)
+							{
+								yield return new Extension<TContract>(type, source);
+								break; //return each type only once
+							}
 						}
 					}
 				}
