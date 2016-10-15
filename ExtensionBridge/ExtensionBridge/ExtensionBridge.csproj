@@ -35,7 +35,8 @@
     <BuildPackage>true</BuildPackage>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>application.ico</ApplicationIcon>
+    <ApplicationIcon>
+    </ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
