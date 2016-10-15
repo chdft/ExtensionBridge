@@ -16,7 +16,7 @@ namespace ExtensionBridge
 
 		public IEnumerable<Assembly> GetAssemblies()
 		{
-			return new Assembly[] { Assembly.GetExecutingAssembly() };
+			return new Assembly[] { Assembly.GetEntryAssembly() };
 		}
 	}
 }
