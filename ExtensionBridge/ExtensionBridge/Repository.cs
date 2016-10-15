@@ -17,6 +17,7 @@ namespace ExtensionBridge
 		/// <remarks>
 		/// This reference is guaranteed to not change during the lifetime of this object.
 		/// </remarks>
+		/// <seealso cref="IAssemblySource"/>
 		public IList<IAssemblySource> Sources
 		{
 			get { return _Sources; }
@@ -33,7 +34,7 @@ namespace ExtensionBridge
 		{
 			if (!typeof(TContract).IsContract())
 			{
-				throw new ArgumentException("cannot search extensions for an interface that is not a contract (use ContractAttribute)");
+				throw new ArgumentException("TContract must be marked as contract. (use ContractAttribute)");
 			}
 
 			foreach (var source in Sources)
@@ -45,8 +46,8 @@ namespace ExtensionBridge
 				}
 				catch (SourceLoadingException)
 				{
-					//TODO: log somewhere?!
-					//ignore for now
+					//we can't really do anything about this => re-throw
+					throw;
 				}
 				if (assemblies != null)
 				{
@@ -54,8 +55,9 @@ namespace ExtensionBridge
 					{
 						foreach (Type type in assembly.GetTypes())
 						{
-							//check first, if the contract is implemented at all; otherwise the search for an extension-attribute isn't nessecary
-							//check ContainsGenericParameters, because generic types with unspecified type parameters cannot be instatiated...
+							//check first, if the contract is implemented at all; otherwise the search for an extension-attribute isn't necessary
+							//check ContainsGenericParameters, because generic types with unspecified type parameters cannot be instantiated...
+							//doing it in this order is slightly faster, because checking whether TContract is implemented is faster than searching for a matching attribute
 							if (type.ImplementsContract<TContract>() && type.DeclaresContract<TContract>() && !type.ContainsGenericParameters)
 							{
 								yield return new Extension<TContract>(type, source);

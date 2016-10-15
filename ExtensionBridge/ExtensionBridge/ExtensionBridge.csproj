@@ -45,6 +45,7 @@
     <Compile Include="ExtensionAttribute.cs" />
     <Compile Include="ExtensionContractAttribute.cs" />
     <Compile Include="ExtensionInstantiationException.cs" />
+    <Compile Include="FileLoadResult.cs" />
     <Compile Include="IAssemblySource.cs" />
     <Compile Include="LocalAssemblySource.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

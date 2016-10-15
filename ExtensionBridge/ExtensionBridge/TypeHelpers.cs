@@ -17,7 +17,7 @@ namespace ExtensionBridge
 		/// <returns>true, if the type implements the contract; false otherwise</returns>
 		public static bool ImplementsContract<TContract>(this Type potentialExtensionType) where TContract : class
 		{
-			return potentialExtensionType.GetInterfaces().Contains(typeof(TContract));
+			return typeof(TContract).IsAssignableFrom(potentialExtensionType);
 		}
 
 		/// <summary>
