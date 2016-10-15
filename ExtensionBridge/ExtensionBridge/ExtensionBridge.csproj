@@ -40,7 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DirectorySource.cs" />
+    <Compile Include="DirectoryAssemlbySource.cs" />
     <Compile Include="Extension.cs" />
     <Compile Include="ExtensionAttribute.cs" />
     <Compile Include="ExtensionContractAttribute.cs" />

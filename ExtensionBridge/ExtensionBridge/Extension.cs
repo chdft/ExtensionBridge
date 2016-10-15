@@ -29,6 +29,11 @@ namespace ExtensionBridge
 
 		public IAssemblySource Source { get; private set; }
 
+		/// <summary>
+		/// Creates a new Instance of the extension.
+		/// </summary>
+		/// <exception cref="ExtensionInstantiationException">the extension could not be instantiated</exception>
+		/// <returns>instance of the extension</returns>
 		public TContract CreateInstance()
 		{
 			TContract instance = null;

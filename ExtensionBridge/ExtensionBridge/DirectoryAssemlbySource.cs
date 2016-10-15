@@ -16,8 +16,8 @@ namespace ExtensionBridge
 		public const string DllSearchPattern = "*.dll";
 		public const string AllFilesSearchPattern = "*";
 
-		/// <param name="directory">relative or absolute path to a directory</param>
-		/// <param name="searchPattern">search pattern used to filter files; filters for DLL-files only by default; see https://msdn.microsoft.com/library/wz42302f(v=vs.110).aspx for information about the allowed characters</param>
+		/// <param name="directory">relative or absolute path to a directory, see <see cref="Directory"/> for detailed information</param>
+		/// <param name="searchPattern">search pattern used to filter files; filters for DLL-files only by default; see <see cref="SearchPattern"/> for detailed information</param>
 		/// <remarks>
 		/// <note type="warning">
 		/// You must call <see cref="LoadAssemblies"/> before calling <see cref="GetAssemblies"/> (or passing it to a Repository). Otherwise the call will fail with a <see cref="SourceLoadingException"/> and extensions from this source will not be available.
@@ -26,12 +26,13 @@ namespace ExtensionBridge
 		/// <seealso cref="DllSearchPattern"/>
 		public DirectoryAssemlbySource(string directory, string searchPattern = DllSearchPattern)
 		{
-			Directory = directory;
+			Directory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, directory);
 			SearchPattern = searchPattern;
 		}
 
 		/// <summary>
 		/// Relative or absolute path to the directory that is searched for assemblies
+		/// Note that paths are relative to the application directory and not the current directory for security reasons.
 		/// </summary>
 		public string Directory { get; private set; }
 
@@ -58,38 +59,41 @@ namespace ExtensionBridge
 		{
 			List<FileLoadResult> results = new List<FileLoadResult>();
 			List<Assembly> assemblies = new List<Assembly>();
-			foreach (var file in System.IO.Directory.GetFiles(Directory, SearchPattern, SearchOption.TopDirectoryOnly))
+			if (System.IO.Directory.Exists(Directory))
 			{
-				Assembly assembly = null;
-				try
+				foreach (var file in System.IO.Directory.GetFiles(Directory, SearchPattern, SearchOption.TopDirectoryOnly))
 				{
-					assembly = Assembly.LoadFrom(file);
-				}
-				catch (System.IO.FileNotFoundException e)
-				{
-					//race condition: the file was deleted during file enumeration => can be safely ignored
-					results.Add(new FileLoadResult(file, e));
-				}
-				catch (BadImageFormatException e)
-				{
-					//incompatible assembly format (or not an assembly at all)
-					results.Add(new FileLoadResult(file, e));
-				}
-				catch (System.Security.SecurityException e)
-				{
-					//permission denied (this has nothing to do with file system access control, but AppDomain restrictions)
-					//this exception will occur for *all* assemblies since all assemblies would be loaded from the same directory (which is either local or remote, but not both)
-					results.Add(new FileLoadResult(file, e));
-				}
-				catch (System.IO.PathTooLongException e)
-				{
-					//path is to long; we can't do anything about it
-					results.Add(new FileLoadResult(file, e));
-				}
-				if (assembly != null)
-				{
-					assemblies.Add(assembly);
-					results.Add(new FileLoadResult(file));
+					Assembly assembly = null;
+					try
+					{
+						assembly = Assembly.LoadFrom(file);
+					}
+					catch (System.IO.FileNotFoundException e)
+					{
+						//race condition: the file was deleted during file enumeration => can be safely ignored
+						results.Add(new FileLoadResult(file, e));
+					}
+					catch (BadImageFormatException e)
+					{
+						//incompatible assembly format (or not an assembly at all)
+						results.Add(new FileLoadResult(file, e));
+					}
+					catch (System.Security.SecurityException e)
+					{
+						//permission denied (this has nothing to do with file system access control, but AppDomain restrictions)
+						//this exception will occur for *all* assemblies since all assemblies would be loaded from the same directory (which is either local or remote, but not both)
+						results.Add(new FileLoadResult(file, e));
+					}
+					catch (System.IO.PathTooLongException e)
+					{
+						//path is to long; we can't do anything about it
+						results.Add(new FileLoadResult(file, e));
+					}
+					if (assembly != null)
+					{
+						assemblies.Add(assembly);
+						results.Add(new FileLoadResult(file));
+					}
 				}
 			}
 			Assemblies = assemblies;
