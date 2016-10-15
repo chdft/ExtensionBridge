@@ -12,7 +12,7 @@ By exercising any rights to ExtensionBridge provided here, you accept and agree 
 - you CAN use ExtensionBridge in a process intended to make money (from allow-commercial addition)
 - you CAN use ExtensionBridge in other products, for example by linking to binaries of ExtensionBridge (from allow-linking addition)
 - you MAY NOT sell ExtensionBridge (from no-sell addition)
-- you MAY NOT redistribute exact copys of ExtensionBridge (from no-rehost addition)
+- you MAY NOT redistribute exact copys of ExtensionBridge (however you can distribute it alongside an application that depends on it) (from no-rehost addition)
 - you MAY NOT include ExtensionBridge in a product sold to or used by a governmental organization or agency. This espacially include military organisations. (from no-gov addition)
 - you MAY NOT use ExtensionBridge if you represent an governmental organization. This includes contractors who work for governmental organizations. (from no-gov addition)
 - you MAY NOT use ExtensionBridge for military purposes (from no-gov addition)
