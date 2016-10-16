@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace ExtensionBridge.Sample.Extension1
 {
+	//note that one class can be registered for multiple ExtensionContracts
 	[Extension(typeof(ExtensionBridge.Sample.Host.ITextProvider))]
 	public class Extension1 : ExtensionBridge.Sample.Host.ITextProvider
 	{
