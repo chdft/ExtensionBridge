@@ -15,4 +15,4 @@ I decided to go the route of explicitly declaring a class an extension, because 
 2) it adds clarity to the code (you don't just have an unused class floating around)
 
 ## Usage
-There is an [example application](/Samples) consisting of one Host and one extension-library. There are a lot of inline comments explaining how stuff works.
+There is an example application consisting of one [host](/ExtensionBridge.Sample.Host) and one [extension-library](/ExtensionBridge.Sample.Extension1). There are a lot of inline comments explaining how stuff works.
