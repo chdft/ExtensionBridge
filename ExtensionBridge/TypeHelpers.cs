@@ -30,8 +30,9 @@ namespace ExtensionBridge
 		{
 			foreach (var extensionAttribute in potentialExtensionType.GetCustomAttributes(typeof(ExtensionAttribute)).Cast<ExtensionAttribute>())
 			{
-				if (extensionAttribute.Contract == typeof(TContract))
+				if (extensionAttribute.Contract == typeof(TContract) || extensionAttribute == null)
 				{
+					//null matches all contracts
 					//matching contract
 					return true;
 				}
