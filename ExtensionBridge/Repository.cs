@@ -69,7 +69,6 @@ namespace ExtensionBridge
 							if (type.ImplementsContract<TContract>() && type.DeclaresContract<TContract>() && !type.ContainsGenericParameters)
 							{
 								yield return new Extension<TContract>(type, source);
-								break; //return each type only once
 							}
 						}
 					}
