@@ -8,8 +8,17 @@ using System.Threading.Tasks;
 
 namespace ExtensionBridge
 {
+	/// <summary>
+	/// Represents an extension implementing <typeparamref name="TContract"/>.
+	/// </summary>
+	/// <typeparam name="TContract">Contract interface</typeparam>
 	public class Extension<TContract> where TContract : class
 	{
+		/// <summary>
+		/// Create a new Extension instance based on the represented extension type and providing source.
+		/// </summary>
+		/// <param name="extensionType">Type of the extension.</param>
+		/// <param name="source"><see cref="IAssemblySource"/> that provided the assembly containing this extension.</param>
 		public Extension(Type extensionType, IAssemblySource source)
 		{
 			if (!typeof(TContract).IsAssignableFrom(extensionType))
@@ -25,8 +34,18 @@ namespace ExtensionBridge
 			Source = source;
 		}
 
+		/// <summary>
+		/// Gets the Type of the represented extension.
+		/// </summary>
+		/// <remarks>
+		/// This attribute is intended for advanced use-cases, like extensions with non-default constructors.
+		/// Use <see cref="CreateInstance"/> to create a new instance of the represented extension using the default constructor.
+		/// </remarks>
 		public Type ExtensionType { get; private set; }
 
+		/// <summary>
+		/// Gets the <see cref="IAssemblySource"/> that provided this extension.
+		/// </summary>
 		public IAssemblySource Source { get; private set; }
 
 		/// <summary>

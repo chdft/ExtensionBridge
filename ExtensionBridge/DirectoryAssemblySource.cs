@@ -11,9 +11,16 @@ namespace ExtensionBridge
 	/// <summary>
 	/// Uses all assemblies found in a directory as a source for extensions.
 	/// </summary>
-	public class DirectoryAssemlbySource : IAssemblySource
+	public class DirectoryAssemblySource : IAssemblySource
 	{
+		/// <summary>
+		/// Search pattern matching only DLLs with .dll extension
+		/// </summary>
 		public const string DllSearchPattern = "*.dll";
+
+		/// <summary>
+		/// Search pattern matching all files
+		/// </summary>
 		public const string AllFilesSearchPattern = "*";
 
 		/// <param name="directory">relative or absolute path to a directory, see <see cref="Directory"/> for detailed information</param>
@@ -24,7 +31,7 @@ namespace ExtensionBridge
 		/// </note>
 		/// </remarks>
 		/// <seealso cref="DllSearchPattern"/>
-		public DirectoryAssemlbySource(string directory, string searchPattern = DllSearchPattern)
+		public DirectoryAssemblySource(string directory, string searchPattern = DllSearchPattern)
 		{
 			Directory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, directory);
 			SearchPattern = searchPattern;
@@ -47,12 +54,18 @@ namespace ExtensionBridge
 		/// </remarks>
 		public string SearchPattern { get; private set; }
 
+		/// <summary>
+		/// Currently known set of assemblies.
+		/// </summary>
+		/// <remarks>
+		/// This value is updated when <see cref="LoadAssemblies"/> is called.
+		/// </remarks>
 		protected IEnumerable<Assembly> Assemblies { get; private set; }
 
 		/// <summary>
 		/// Loads all assemblies matching from the specified Directory
 		/// </summary>
-		/// <returns>Collection of <see cref="FileLoadResults"/> containing information about the status of each found file (most notably whether it could be loaded successfully)</returns>
+		/// <returns>Collection of <see cref="FileLoadResult"/> containing information about the status of each found file (most notably whether it could be loaded successfully)</returns>
 		/// <seealso cref="Directory"/>
 		/// <seealso cref="SearchPattern"/>
 		public IEnumerable<FileLoadResult> LoadAssemblies()

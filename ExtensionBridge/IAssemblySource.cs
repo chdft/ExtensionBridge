@@ -7,6 +7,12 @@ using System.Threading.Tasks;
 
 namespace ExtensionBridge
 {
+	/// <summary>
+	/// Provides assemblies for extension-lookup.
+	/// </summary>
+	/// <seealso cref="KnownAssemblySource"/>
+	/// <seealso cref="DirectoryAssemblySource"/>
+	/// <seealso cref="LocalAssemblySource"/>
 	public interface IAssemblySource
 	{
 		/// <summary>

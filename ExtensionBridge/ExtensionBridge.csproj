@@ -48,7 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DirectoryAssemlbySource.cs" />
+    <Compile Include="DirectoryAssemblySource.cs" />
     <Compile Include="Extension.cs" />
     <Compile Include="ExtensionAttribute.cs" />
     <Compile Include="ExtensionContractAttribute.cs" />

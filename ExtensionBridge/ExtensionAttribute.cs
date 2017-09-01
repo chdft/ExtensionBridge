@@ -12,9 +12,12 @@ namespace ExtensionBridge
 	[AttributeUsage(AttributeTargets.Class, Inherited = false, AllowMultiple = true)]
 	public sealed class ExtensionAttribute : Attribute
 	{
+		/// <summary>
+		/// Create a new ExtensionAttribute based on a declared contract interface.
+		/// </summary>
+		/// <param name="contract">contract interface type / null to implicitly declare all implemented contracts</param>
 		public ExtensionAttribute(Type contract)
 		{
-			if (contract == null) { throw new ArgumentNullException("contract"); }
 			Contract = contract;
 		}
 

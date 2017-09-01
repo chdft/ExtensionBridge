@@ -7,13 +7,26 @@ using System.Threading.Tasks;
 
 namespace ExtensionBridge
 {
+	/// <summary>
+	/// Provides extensions based on implemented contracts.
+	/// </summary>
 	public class Repository
 	{
+		/// <summary>
+		/// Create a new Repository instance with an empty <see cref="Sources"/> collection.
+		/// </summary>
 		public Repository()
 		{
 			_Sources = new LinkedList<IAssemblySource>();
 		}
 
+		/// <summary>
+		/// Create a new Repository instance with a given <see cref="Sources"/> collection.
+		/// </summary>
+		/// <param name="sources">sources</param>
+		/// <remarks>
+		/// The contents of the <paramref name="sources"/> parameter are copied into a new collection.
+		/// </remarks>
 		public Repository(IEnumerable<IAssemblySource> sources)
 		{
 			_Sources = new LinkedList<IAssemblySource>(sources);
@@ -61,7 +74,7 @@ namespace ExtensionBridge
 				{
 					foreach (var assembly in assemblies)
 					{
-						foreach (Type type in assembly.GetTypes())
+						foreach (Type type in assembly.GetExportedTypes())
 						{
 							//check first, if the contract is implemented at all; otherwise the search for an extension-attribute isn't necessary
 							//check ContainsGenericParameters, because generic types with unspecified type parameters cannot be instantiated...

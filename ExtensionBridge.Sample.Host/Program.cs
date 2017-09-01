@@ -13,7 +13,7 @@ namespace ExtensionBridge.Sample.Host
 			Repository repository = new Repository();
 
 			//relative path are relative to the application directory, not the current directory
-			DirectoryAssemlbySource directorySource = new DirectoryAssemlbySource("Extensions", "*.mycustomextensionformat");
+			DirectoryAssemblySource directorySource = new DirectoryAssemblySource("Extensions", "*.mycustomextensionformat");
 			//you have to call directorySource.LoadAssemblies() *before* you add directorySource to the repository (this actually loads the assemblies from the found files)
 			//while it is recommended to check the returned collection of FileLoadResults for any unsuccessful items (and show that information to the user/log it somewhere), you can safely ignore the return value of directorySource.LoadAssemblies()
 			//note that the call succeeds, even when the specified directory (in this case Extensions) can not be found
