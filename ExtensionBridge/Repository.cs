@@ -9,7 +9,15 @@ namespace ExtensionBridge
 {
 	public class Repository
 	{
-		public Repository() { }
+		public Repository()
+		{
+			_Sources = new LinkedList<IAssemblySource>();
+		}
+
+		public Repository(IEnumerable<IAssemblySource> sources)
+		{
+			_Sources = new LinkedList<IAssemblySource>(sources);
+		}
 
 		/// <summary>
 		/// collection of sources used for getting the extension implementations
@@ -18,11 +26,11 @@ namespace ExtensionBridge
 		/// This reference is guaranteed to not change during the lifetime of this object.
 		/// </remarks>
 		/// <seealso cref="IAssemblySource"/>
-		public IList<IAssemblySource> Sources
+		public ICollection<IAssemblySource> Sources
 		{
 			get { return _Sources; }
 		}
-		private IList<IAssemblySource> _Sources = new List<IAssemblySource>();
+		private ICollection<IAssemblySource> _Sources;
 
 		/// <summary>
 		/// extensions for the contract <typeparamref name="TContract"/>
