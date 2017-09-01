@@ -10,9 +10,9 @@ MEF (Managed Extendibility Framework) is a very nice framework for extendibility
 So yes, I know I reinvented the wheel and yes, it isn't as round - but thats exactly what I wanted.
 
 ### Why are the Attributes needed?
-I decided to go the route of explicitly declaring a class an extension, because of two reasons:
+I decided to go the route of explicitly declaring a class an extension for two reasons:
 1) a class may implement the Contract, but not be *intended* as an extension
-2) it adds clarity to the code (you don't just have an unused class floating around)
+2) it adds clarity to the code (you don't have an unused class floating around)
 
 ## Usage
 There is an example application consisting of one [host](/ExtensionBridge.Sample.Host) and one [extension-library](/ExtensionBridge.Sample.Extension1). There are a lot of inline comments explaining how stuff works.

@@ -38,7 +38,7 @@ namespace ExtensionBridge.Sample.Host
 
 			repository.Sources.Add(directorySource);
 			//LocalAssemblySource always refers to the assembly that was started (which is usually your host applications .exe)
-			//if you want more control (i.e. because your host application consists of more than one assembly), use SingleAssemblySource instead
+			//if you want more control (i.e. because your host application consists of more than one assembly), use KnownAssemblySource instead
 			repository.Sources.Add(new LocalAssemblySource());
 
 
